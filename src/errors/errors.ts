@@ -30,6 +30,7 @@ export const ErrorEnums = {
   NOT_ENOUGH_PRIVILEGES: "Not enough privileges to access this section.",
   INVALID_PASSWORD: "Password needs at least eight characters.",
   REPEATED_USERNAME_OR_EMAIL: "Username or email are already in use.",
+  INVALID_EMAIL: "Email format is incorrect, please try again.",
 } as const;
 
 export const Errors = {
@@ -37,22 +38,22 @@ export const Errors = {
     return new CustomError(400, ErrorEnums.INCOMPLETE_FORM);
   },
   AUTH_FAILED: () => {
-    return new CustomError(400, ErrorEnums.AUTH_FAILED);
+    return new CustomError(401, ErrorEnums.AUTH_FAILED);
   },
   USERNAME_ALREADY_TAKEN: () => {
     return new CustomError(400, ErrorEnums.USERNAME_ALREADY_TAKEN);
   },
   USER_OR_PASSWORD_INCORRECT: () => {
-    return new CustomError(400, ErrorEnums.USER_OR_PASSWORD_INCORRECT);
+    return new CustomError(401, ErrorEnums.USER_OR_PASSWORD_INCORRECT);
   },
   NOT_FOUND: () => {
     return new CustomError(404, ErrorEnums.NOT_FOUND);
   },
   MISSING_TOKEN: () => {
-    return new CustomError(400, ErrorEnums.MISSING_TOKEN);
+    return new CustomError(401, ErrorEnums.MISSING_TOKEN);
   },
   INVALID_TOKEN: () => {
-    return new CustomError(400, ErrorEnums.INVALID_TOKEN);
+    return new CustomError(401, ErrorEnums.INVALID_TOKEN);
   },
   INVALID_FILM_ID: () => {
     return new CustomError(400, ErrorEnums.INVALID_FILM_ID);
@@ -80,4 +81,5 @@ export const Errors = {
   INVALID_PASSWORD: () => new CustomError(400, ErrorEnums.INVALID_PASSWORD),
   REPEATED_USERNAME_OR_EMAIL: () =>
     new CustomError(409, ErrorEnums.REPEATED_USERNAME_OR_EMAIL),
+  INVALID_EMAIL: () => new CustomError(400, ErrorEnums.INVALID_EMAIL),
 } as const;

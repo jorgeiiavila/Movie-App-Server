@@ -67,8 +67,10 @@ export async function removeFromList(
 
   if (listName === "toWatch")
     user!.toWatch = user!.toWatch.filter((x) => x.filmID !== filmID);
-  if (listName === "watched")
+  if (listName === "watched") {
     user!.watched = user!.watched.filter((x) => x.filmID !== filmID);
+    await Feedback.remove({ userID, filmID });
+  }
   if (listName === "favorites")
     user!.favorites = user!.favorites.filter((x) => x.filmID !== filmID);
 

@@ -95,6 +95,7 @@ router.delete("/list/:list/:filmID", (req, res, next) => {
 
 router.post("/feedback", (req, res) => {
   const feedback = req.body as IFeedback;
+  feedback.review = feedback.review.trim();
   const userID = res.locals.userID;
   initConnection<IFeedback>(
     () => FilmLogic.postFeedback(userID, feedback),
