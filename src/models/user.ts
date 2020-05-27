@@ -57,7 +57,7 @@ async function init() {
       name: "admin",
       username: "admin",
       email: "admin",
-      password: "admin",
+      password: "admin123",
       createdAt: new Date(),
       type: "admin",
     });
