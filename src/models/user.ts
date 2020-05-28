@@ -50,21 +50,4 @@ export interface IUser {
 
 const UserModel = model<IUserDocument>("User", UserSchema);
 
-async function init() {
-  const admin = await UserModel.findOne({ type: "admin" });
-  if (!admin) {
-    const adminDoc = new UserModel({
-      name: "admin",
-      username: "admin",
-      email: "admin",
-      password: "admin123",
-      createdAt: new Date(),
-      type: "admin",
-    });
-    await adminDoc.save();
-  }
-}
-
-init();
-
 export default UserModel;

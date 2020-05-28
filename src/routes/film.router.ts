@@ -124,6 +124,11 @@ router.patch("/feedback/:id", (req, res, next) => {
   );
 });
 
+router.get("/feedbacks", (req, res) => {
+  const userID = res.locals.userID;
+  initConnection(() => FilmLogic.getFeedbacks(userID), req, res);
+});
+
 router.get("/feedback/pending", (req, res, next) => {
   const userType = res.locals.userType;
 

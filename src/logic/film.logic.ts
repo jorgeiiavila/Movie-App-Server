@@ -120,6 +120,11 @@ export async function updateFeedback(feedbackID: string, feedback: IFeedback) {
   return { data: oldFeedback, statusCode: 201 };
 }
 
+export async function getFeedbacks(userID: string) {
+  const feedbacks = await Feedback.find({ userID });
+  return { data: feedbacks, statusCode: 200 };
+}
+
 export async function fetchPendingFeedbacks() {
   const pendingFeedbacks = await Feedback.find({
     status: "pending",
